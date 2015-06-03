@@ -58,6 +58,8 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/theme.js"></script>
     <script>
+    window.url = 'http://localhost';
+    // window.url = 'http://192.168.0.139';
         $('#login').on('click', function (e) {
             e.preventDefault();
             if ($('#password').val() != $('#repassword').val()) {

@@ -174,6 +174,9 @@
     <script src="js/theme.js"></script>
     <script src="js/ajaxfileupload.js"></script>
     <script src="js/jquery.cookie.js"></script>
+    <script src="js/jquery.browser.min.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/localStorage.js"></script>
     <script src="js/common.js"></script>
     <script type="text/javascript">
         $(function () {
@@ -186,6 +189,8 @@
                     item.addClass('box-active');
                 }
             });
+            
+            
             $('#submit').on('click', function () {
 
                 $.ajaxFileUpload({
@@ -198,11 +203,21 @@
                     },
                     success: function (data, status) //服务器成功响应处理函数
                     {
-                        console.log(data,status);
+                        if (data.status == 1) {
+                        	if (data.result.length) {
+                       		　　qext.LocalStorage.set({
+                            	key : "data",  
+                            	value :  JSON.stringify(data),
+                            	expires : 3600 * 1000  /*单位：ms*/ 
+                       		});                     		
+                        }
+                        } else {
+                        	alert('上传出错!');
+                        }
                     },
                     error: function (data, status, e)//服务器响应失败处理函数
                     {
-                        console.log(data,status);
+                        
                     }
                 });
                 return false;

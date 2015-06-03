@@ -171,7 +171,6 @@ jQuery.extend({
             data = r.responseText;
         if (type == "xml")
             data = r.responseXML;
-        console.log(r);
         //data = type == "xml" || data ? r.responseXML : r.responseText;
         // If the type is "script", eval it in global context
         if (type == "script")

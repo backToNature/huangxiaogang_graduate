@@ -151,56 +151,52 @@
     <!-- call all plugins -->
     <script src="js/theme.js"></script>
     <script src="js/jquery.cookie.js"></script>
+    <script src="js/jquery.browser.min.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/localStorage.js"></script>
     <script src="js/common.js"></script>
     <!-- build the charts -->
     <script type="text/javascript">
         $(function () {
             
                 // Morris Bar Chart
-                
-            $.ajax({
-                type: "GET",
-                url: "./js/test.json", 
-                dataType: "json",
-                success: function (data) {
-                    console.log(data);
-                    if (data.result.length) {
-                        var match = 0;
-                        $(data.result).each(function (index) {
-                            if (this.is == '有') {
-                                match ++;
-                            }
-                        });
-
-                        Morris.Bar({
-                            element: 'hero-bar',
-                            data: [
-                                {device: '符合', count: match},
-                                {device: '不符合', count: data.result.length - match},
-                            ],
-                            xkey: 'device',
-                            ykeys: ['count'],
-                            labels: ['count'],
-                            barRatio: 0.4,
-                            xLabelMargin: 10,
-                            hideHover: 'auto',
-                            barColors: ["#3d88ba","#000"]
-                        });
-
-                        // Morris Donut Chart
-                        Morris.Donut({
-                            element: 'hero-donut',
-                            data: [
-                                {label: '符合', value: (match / data.result.length) * 100 },
-                                {label: '不符合', value: ((data.result.length - match) / data.result.length) * 100 },
-                            ],
-                            colors: ["#30a1ec", "red"],
-                            formatter: function (y) { return y + "%" }
-                        });
-
+               
+    		if (qext.LocalStorage.get({key : "data"})) {
+    			var data = JSON.parse(qext.LocalStorage.get({key : "data"}));
+    			var match = 0;
+                $(data.result).each(function (index) {
+                    if (this.is == '有') {
+                        match ++;
                     }
-                }
-            });
+                });
+    			Morris.Bar({
+                    element: 'hero-bar',
+                    data: [
+                        {device: '符合', count: match},
+                        {device: '不符合', count: data.result.length - match},
+                    ],
+                    xkey: 'device',
+                    ykeys: ['count'],
+                    labels: ['count'],
+                    barRatio: 0.4,
+                    xLabelMargin: 10,
+                    hideHover: 'auto',
+                    barColors: ["#3d88ba","#000"]
+                });
+
+                // Morris Donut Chart
+                Morris.Donut({
+                    element: 'hero-donut',
+                    data: [
+                        {label: '符合', value: (match / data.result.length) * 100 },
+                        {label: '不符合', value: ((data.result.length - match) / data.result.length) * 100 },
+                    ],
+                    colors: ["#30a1ec", "red"],
+                    formatter: function (y) { return y + "%" }
+                });
+    		}
+    		
+            
         });
         
 

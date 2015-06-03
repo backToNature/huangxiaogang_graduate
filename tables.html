@@ -155,7 +155,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="render_table">
                                 <!-- row -->
                                 <tr>
                                     <td>
@@ -199,6 +199,30 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <script id="tpl_table" type="text/html">
+							{{each result as value i}}
+                    			<tr>
+                                    <td>
+                                        <a href="#">#{{i+1}}</a>
+                                    </td>
+                                    <td>
+                                        {{time}}
+                                    </td>
+                                    <td>
+                                        {{value.expect}}
+                                    </td>
+                                    <td>
+                                        {{if value.is=="没有"}}<span class="label">不符合</span>{{else}}<span class="label label-success">符合</span>{{/if}}
+                                    </td>
+                                    <td>
+                                        {{value.reality}}
+                                    </td>
+                                    <td>
+                                       	 黄啸刚
+                                    </td>
+                                </tr>
+                    		{{/each}}
+						</script>
                     </div>
                 </div>
                 <!-- end orders table -->
@@ -212,8 +236,22 @@
     <script src="js/jquery-latest.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/theme.js"></script>
+    <script src="js/template.js"></script>
     <script src="js/jquery.cookie.js"></script>
+    <script src="js/jquery.browser.min.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/localStorage.js"></script>
     <script src="js/common.js"></script>
+    <script>
+    	$(function () {
+    		if (qext.LocalStorage.get({key : "data"})) {
+    			var data = JSON.parse(qext.LocalStorage.get({key : "data"}));
+    			var render = template('tpl_table', data);
+                $('.render_table').html(render);
+    		}
+    		
+    	});
+    </script>
 
 </body>
 </html>

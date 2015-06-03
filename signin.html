@@ -88,10 +88,15 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/jquery.cookie.js"></script>
+    <script src="js/jquery.browser.min.js"></script>
+    <script src="js/json2.js"></script>
+    <script src="js/localStorage.js"></script>
 
     <!-- pre load bg imgs -->
     <script type="text/javascript">
         $(function () {
+        	window.url = 'http://localhost';
+            // window.url = 'http://192.168.0.139';
             // bg switcher
             var $btns = $(".bg-switch .bg");
             $btns.click(function (e) {
@@ -118,6 +123,9 @@
                         if (data.result[0].status == 0) {
                             alert('账号密码不正确');
                         } else if (data.result[0].status == 1) {
+                        	if (qext.LocalStorage.get({key : "data"})) {
+                                qext.LocalStorage.clearAll();
+                    		}
                             if (data.result[0].role == 1) {
                                 // 管理员逻辑
                                 $.cookie('username', $('#account').val(), { expires: 1 });
