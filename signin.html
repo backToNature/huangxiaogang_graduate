@@ -114,6 +114,7 @@
                     },
                     dataType: "jsonp",
                     success: function (data) {
+                        console.log(data);
                         if (data.result[0].status == 0) {
                             alert('账号密码不正确');
                         } else if (data.result[0].status == 1) {
@@ -121,12 +122,14 @@
                                 // 管理员逻辑
                                 $.cookie('username', $('#account').val(), { expires: 1 });
                                 $.cookie('role', 1, { expires: 1 });
+                                $.cookie('userId', data.result[0].num, { expires: 1 });
 
                                 location.href = './index.html?user=' + $('#account').val()
                             } else if (data.result[0].role == 0) {
                                 // 普通用户逻辑
                                 $.cookie('username', $('#account').val(), { expires: 1 });
                                 $.cookie('role', 0, { expires: 1 });
+                                $.cookie('userId', data.result[0].num, { expires: 1 });
                                 location.href = './index.html?user=' + $('#account').val()
                             }
 

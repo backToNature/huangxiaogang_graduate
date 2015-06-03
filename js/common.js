@@ -16,15 +16,78 @@ $(function () {
         }
         return ret;
     }
+    var adminTemplate = '<ul id="dashboard-menu">' +
+            '<li>' +
+                '<a href="index.html">' +
+                    '<i class="icon-home"></i>' +
+                    '<span>主页</span>' +
+                '</a>' +
+            '</li>' +
+            '<li>' +
+                '<a href="chart-showcase.html">' +
+                    '<i class="icon-signal"></i>' +
+                    '<span>图表</span>' +
+                '</a>' +
+            '</li>' +
+            '<li>' +
+                '<a href="tables.html">' +
+                    '<i class="icon-th-large"></i>' +
+                    '<span>表格详情</span>' +
+                '</a>' +
+            '</li>' +
+            '<li>' +
+                '<a href="user-list.html">' +
+                    '<i class="icon-group"></i>' +
+                    '<span>用户列表</span>' +
+                '</a>' +
+            '</li>' +
+            '<li>' +
+                '<a class="dropdown-toggle" href="#">' +
+                    '<i class="icon-edit"></i>' +
+                    '<span>规则配置</span>' +
+                    '<i class="icon-chevron-down"></i>' +
+                '</a>' +
+                '<ul class="submenu">' +
+                    '<li><a href="form-showcase.html">路由器</a></li>' +
+                    '<li><a href="form-showcase1.html">交换机</a></li>' +
+                '</ul>' +
+            '</li>' +
+        '</ul>';
+    var normalTemplate = '<ul id="dashboard-menu">' +
+            '<li>' +
+                '<a href="index.html">' +
+                    '<i class="icon-home"></i>' +
+                    '<span>主页</span>' +
+                '</a>' +
+            '</li>' +
+            '<li>' +
+                '<a href="chart-showcase.html">' +
+                    '<i class="icon-signal"></i>' +
+                    '<span>图表</span>' +
+                '</a>' +
+            '</li>' +
+            '<li>' +
+                '<a href="tables.html">' +
+                    '<i class="icon-th-large"></i>' +
+                    '<span>表格详情</span>' +
+                '</a>' +
+            '</li>' +
+        '</ul>';
     if ($.cookie('username')) {
         $('.userName').text($.cookie('username'));
     } else {
         alert('请先登陆');
         location.href = './signin.html';
     }
+    if ($.cookie('role') == 1) {
+        
+    } else if ($.cookie('role') == 0) {
+        $('.admin').hide();
+    }
     $('#logout').on('click', function () {
         $.cookie('username', '', { expires: -1 });
         $.cookie('role', '', { expires: -1 });
+        $.cookie('userId', '', { expires: -1 });
         location.href = './signin.html';
     });
 });

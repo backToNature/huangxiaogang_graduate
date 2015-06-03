@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Detail Admin - My Info</title>
+	<title>Cisco设备分析 - 密码修改</title>
     
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
@@ -33,38 +33,26 @@
     <!-- navbar -->
     <div class="navbar navbar-inverse">
         <div class="navbar-inner">
-            <a class="brand" href="index.html"><img src="img/logo.png" /></a>
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <button type="button" class="btn btn-navbar visible-phone" id="menu-toggler">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="chart-showcase.html">Charts</a></li>
-                    <li><a href="user-list.html">Users</a></li>
-                    <li><a href="form-showcase.html">Forms</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="icons.html">Icons</a></li>
-                    <li><a href="calendar.html">Calendar</a></li>
-                    <li><a href="tables.html">Tables</a></li>
-                    <li><a href="ui-elements.html">UI Elements</a></li>
-                </ul>
-            </div>
+
+            <a class="brand" href="index.html"><img src="img/logo.png" /></a>
+
             <ul class="nav pull-right">
-                <li class="hidden-phone">
-                    <input class="search" type="text" />
-                </li>
-                <li class="settings">
-                    <a href="personal-info.html" role="button">
-                        <span class="navbar_icon"></span>
+                <div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle hidden-phone" data-toggle="dropdown">
+                        <span class="icon-user"></span>
+                        <span class="userName">undefined</span>
+                        <b class="caret"></b>
                     </a>
-                </li>
-                <li id="fat-menu" class="dropdown">
-                    <a href="signin.html" role="button" class="logout">
-                        <span class="navbar_icon"></span>
-                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a id="logout" href="#">注销</a></li>
+                        <li><a href="personal-info.html">修改密码</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -79,69 +67,30 @@
                 <div class="span3 avatar-box">
                     <div class="personal-image">
                         <img src="img/personal-info.png" class="avatar img-circle" />
-                        <p>Upload a different photo...</p>
-                        
-                        <input type="file" />
+                        <p class="userName"></p>
                     </div>
                 </div>
 
                 <!-- edit form column -->
                 <div class="span7 personal-info">
-                    <div class="alert alert-info">
-                        <i class="icon-lightbulb"></i>
-                        This page shows an example of an alternative layout with the main navbar on the top
-                        <br /> using <strong>.content.wide-content</strong> for this main container
-                    </div>
-                    <h5 class="personal-title">Personal info</h5>
+                    
+                    <h5 class="personal-title">修改 密码</h5>
 
                     <form />
                         <div class="field-box">
-                            <label>First name:</label>
-                            <input class="span5 inline-input" type="text" value="Alejandra" />
+                            <label for="origin_password">原始密码:</label>
+                            <input id="origin_password" class="span5 inline-input" type="password" value="" />
                         </div>
                         <div class="field-box">
-                            <label>Last name:</label>
-                            <input class="span5 inline-input" type="text" value="Galvan" />
+                            <label for="new_password">修改后密码:</label>
+                            <input id="new_password" class="span5 inline-input" type="password" value="" />
                         </div>
                         <div class="field-box">
-                            <label>Company:</label>
-                            <input class="span5 inline-input" type="text" value="Design Co." />
-                        </div>
-                        <div class="field-box">
-                            <label>Email:</label>
-                            <input class="span5 inline-input" type="text" value="alejandra@design.com" />
-                        </div>
-                        <div class="field-box">
-                            <label>Time Zone:</label>
-                            <div class="ui-select">
-                                <select id="user_time_zone" name="user[time_zone]">
-                                    <option value="Hawaii" />(GMT-10:00) Hawaii
-                                    <option value="Alaska" />(GMT-09:00) Alaska
-                                    <option value="Pacific Time (US &amp; Canada)" />(GMT-08:00) Pacific Time (US &amp; Canada)
-                                    <option value="Arizona" />(GMT-07:00) Arizona
-                                    <option value="Mountain Time (US &amp; Canada)" />(GMT-07:00) Mountain Time (US &amp; Canada)
-                                    <option value="Central Time (US &amp; Canada)" selected="selected" />(GMT-06:00) Central Time (US &amp; Canada)
-                                    <option value="Eastern Time (US &amp; Canada)" />(GMT-05:00) Eastern Time (US &amp; Canada)
-                                    <option value="Indiana (East)" />(GMT-05:00) Indiana (East)                                    
-                                </select>
-                            </div>
-                        </div>
-                        <div class="field-box">
-                            <label>Username:</label>
-                            <input class="span5 inline-input" type="text" value="alegalvan" />
-                        </div>
-                        <div class="field-box">
-                            <label>Password:</label>
-                            <input class="span5 inline-input" type="password" value="blablablabla" />
-                        </div>
-                        <div class="field-box">
-                            <label>Confirm password:</label>
-                            <input class="span5 inline-input" type="password" value="blablablabla" />
+                            <label for="re_new_password">重复密码:</label>
+                            <input id="re_new_password" class="span5 inline-input" type="password" value="" />
                         </div>
                         <div class="span6 field-box actions">
-                            <input type="button" class="btn-glow primary" value="Save Changes" />
-                            <span>OR</span>
-                            <input type="reset" value="Cancel" class="reset" />
+                            <input id="save_password" type="button" class="btn-glow primary" value="保存修改" />
                         </div>
                     </form>
                 </div>
@@ -155,6 +104,42 @@
     <script src="js/jquery-latest.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/theme.js"></script>
-
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        $(function () {
+            $('#save_password').on('click', function () {
+                var origin_password = $('#origin_password').val(),
+                    new_password = $('#new_password').val(),
+                    re_new_password = $('#re_new_password').val();
+                if (new_password == '' || (new_password != re_new_password)) {
+                    alert('密码不能为空，并且两次输入必须一致。');
+                    return;
+                } else {
+                    $.ajax({
+                        type: "GET",
+                        url: "http://192.168.0.139:8080/TomcatTest/connect/Connect2",
+                        data: {
+                            num: $.cookie('userId'),
+                            password: origin_password,
+                            xpassword: new_password
+                        },
+                        dataType: "jsonp",
+                        success: function (data) {
+                            if (data.result[0].status == 1) {
+                                alert('修改成功!');
+                                location.reload();
+                            } else {
+                                alert('修改失败!');
+                                location.reload();
+                            }
+                        }
+                    });
+                }
+                
+            });
+            
+        });
+    </script>
 </body>
 </html>
