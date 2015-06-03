@@ -189,12 +189,12 @@
             $('#submit').on('click', function () {
 
                 $.ajaxFileUpload({
-                    url: 'http://192.168.0.139:8080/TomcatTest/upload/Upload',//用于文件上传的服务器端请求地址
+                    url: window.url + ':8080/TomcatTest/upload/Upload',//用于文件上传的服务器端请求地址
                     secureuri: false,//一般设置为false
                     fileElementId: 'file',//文件上传空间的id属性 <input type="file" id="file" name="file" />
                     dataType: 'json',//返回值类型 一般设置为json
                     data: {
-                        type: $('.box-active')
+                        type: $('.box-active').attr('data-id')
                     },
                     success: function (data, status) //服务器成功响应处理函数
                     {

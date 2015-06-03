@@ -185,7 +185,7 @@
         var deleId;
         $.ajax({
             type: "GET",
-            url: "http://192.168.0.139:8080/TomcatTest/json/JsonRole",
+            url: window.url + ":8080/TomcatTest/json/JsonRole",
             dataType: "jsonp",
             timeout: 1000,
             success: function (data) {
@@ -204,7 +204,7 @@
         $('#delIt').on('click', function () {
             $.ajax({
                 type: "GET",
-                url: "http://192.168.0.139:8080/TomcatTest/delete/Delete",
+                url: window.url + ":8080/TomcatTest/delete/Delete",
                 dataType: "jsonp",
                 data: {
                     num: deleId

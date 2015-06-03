@@ -118,7 +118,7 @@
                 } else {
                     $.ajax({
                         type: "GET",
-                        url: "http://192.168.0.139:8080/TomcatTest/connect/Connect2",
+                        url: window.url + ":8080/TomcatTest/connect/Connect2",
                         data: {
                             num: $.cookie('userId'),
                             password: origin_password,

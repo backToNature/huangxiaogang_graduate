@@ -66,7 +66,7 @@
             }
             $.ajax({
                 type: "GET",
-                url: "http://192.168.0.139:8080/TomcatTest/connect/Connect1",
+                url: window.url + ":8080/TomcatTest/connect/Connect1",
                 data: {
                     name: $('#account').val(),
                     password: $('#password').val()

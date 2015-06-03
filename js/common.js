@@ -2,6 +2,8 @@
  * Created by wenshui on 15/5/24.
  */
 $(function () {
+    // window.url = 'http://localhost';
+    window.url = 'http://192.168.0.139';
     function parseQueryString(url) {
         var reg_url = /^[^\?]+\?([\w\W]+)$/,
             reg_para = /([^&=]+)=([\w\W]*?)(&|$)/g, //g is very important

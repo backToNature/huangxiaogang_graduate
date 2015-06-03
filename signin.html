@@ -107,7 +107,7 @@
                 e.preventDefault();
                 $.ajax({
                     type: "GET",
-                    url: "http://192.168.0.139:8080/TomcatTest/connect/Connect",
+                    url: window.url + ":8080/TomcatTest/connect/Connect",
                     data: {
                         name: $('#account').val(),
                         password: $('#password').val()

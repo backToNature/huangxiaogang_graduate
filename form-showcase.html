@@ -174,7 +174,7 @@
             });
             $.ajax({
                 type: "GET",
-                url: "http://192.168.0.139:8080/TomcatTest/ruleInsert//RuleDisplay2",
+                url: window.url + ":8080/TomcatTest/ruleInsert//RuleDisplay2",
                 dataType: "jsonp",
                 success: function (data) {
                     if (data.result.length) {
@@ -194,7 +194,7 @@
                 });
                 $.ajax({
                     type: "GET",
-                    url: "http://192.168.0.139:8080/TomcatTest/ruleInsert/RuleInsert2",
+                    url: window.url + ":8080/TomcatTest/ruleInsert/RuleInsert2",
                     dataType: "jsonp",
                     data: req,
                     success: function (data) {
